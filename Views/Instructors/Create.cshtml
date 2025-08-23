@@ -1,0 +1,85 @@
+﻿@model university_Project.Models.Cls_Instructor
+
+@{
+    ViewData["Title"] = "Create Instructor";
+}
+
+<div class="container py-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Create Instructor</h2>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label fw-semibold"></label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter instructor name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Image_URL" class="form-label fw-semibold"></label>
+                    <input asp-for="Image_URL" class="form-control" placeholder="Enter image URL" />
+                    <span asp-validation-for="Image_URL" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Salary" class="form-label fw-semibold"></label>
+                    <input asp-for="Salary" type="number" step="0.01" class="form-control" placeholder="Enter salary" />
+                    <span asp-validation-for="Salary" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Address" class="form-label fw-semibold"></label>
+                    <input asp-for="Address" class="form-control" placeholder="Enter address" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Depart_ID" class="form-label fw-semibold"></label>
+                    <select asp-for="Depart_ID" class="form-select" asp-items="ViewBag.Departments">
+                        <option value="">-- Select Department --</option>
+                    </select>
+                    <span asp-validation-for="Depart_ID" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="CRS_ID" class="form-label fw-semibold"></label>
+                    <select asp-for="CRS_ID" class="form-select" asp-items="ViewBag.Courses">
+                        <option value="">-- Select Course --</option>
+                    </select>
+                    <span asp-validation-for="CRS_ID" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary me-2 shadow-sm">
+                        <i class="bi bi-save me-1"></i> Save
+                    </button>
+                    <a asp-action="Index" class="btn btn-secondary shadow-sm">
+                        <i class="bi bi-x-circle me-1"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    .form-label {
+        text-transform: capitalize;
+    }
+
+    .btn {
+        transition: all 0.2s ease-in-out;
+    }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+</style>

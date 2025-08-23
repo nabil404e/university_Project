@@ -1,0 +1,78 @@
+﻿@model Cls_Instructor
+
+@{
+    ViewData["Title"] = "Instructor Details";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0 text-center">Instructor Details</h2>
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless table-striped table-hover">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="w-25 bg-light">ID</th>
+                                <td>@Model.ID</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="bg-light">Name</th>
+                                <td>@Model.Name</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="bg-light">Salary</th>
+                                <td>@string.Format("{0:C}", Model.Salary)</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="bg-light">Address</th>
+                                <td>@Model.Address</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="bg-light">CRS ID</th>
+                                <td>@Model.CRS_ID</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="bg-light">Department ID</th>
+                                <td>@Model.Depart_ID</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer bg-transparent border-0 text-center">
+                    <a href="@Url.Action("Instrutors_List", "Instructors")" class="btn btn-outline-primary px-4">
+                        <i class="fas fa-arrow-left mr-2"></i>Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+
+    .card-header {
+        padding: 1.25rem;
+    }
+
+    th {
+        font-weight: 600;
+    }
+
+    .table tbody tr {
+        transition: all 0.2s ease;
+    }
+
+        .table tbody tr:hover {
+            background-color: rgba(0, 123, 255, 0.05);
+        }
+</style>
+
+<!-- Add Font Awesome for the back button icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

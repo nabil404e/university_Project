@@ -1,0 +1,48 @@
+﻿@using university_Project.ViewModel
+@model TrainerResultViewModel
+
+@{
+    ViewData["Title"] = "Trainer Result";
+}
+
+<h2>Trainer Result</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Trainer ID</th>
+        <td>@Model.TrainerID</td>
+    </tr>
+    <tr>
+        <th>Trainer Name</th>
+        <td>@Model.TrainerName</td>
+    </tr>
+    <tr>
+        <th>Course Name</th>
+        <td>@Model.CourseName</td>
+    </tr>
+    <tr>
+        <th>Course Status</th>
+        <td>@Model.Status</td>
+    </tr>
+    <tr>
+        <th>Degree</th>
+        <td>
+            @if (Model.Degree !=null)
+            {
+                @Model.Degree
+            }
+            else
+            {
+                <span class="text-danger">No Result</span>
+            }
+        </td>
+
+    <tr>
+
+        <th>Status</th>
+        <td>@Model.Status</td>
+    </tr>
+    </tr>
+</table>
+
+<a href="@Url.Action("Index", "Trainer")" class="btn btn-primary">Back to List</a>

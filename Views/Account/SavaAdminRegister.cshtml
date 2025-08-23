@@ -1,0 +1,334 @@
+﻿@model university_Project.ViewModel.RegisterViewModel
+
+@{
+    ViewData["Title"] = "SavaAdminRegister";
+
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Registration - University Management System</title>
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --info: #2980b9;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .registration-container {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .registration-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .registration-icon {
+            background: var(--primary);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+
+        .registration-title {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .registration-subtitle {
+            color: #6c757d;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+            .form-control:focus {
+                border-color: var(--secondary);
+                box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+            }
+
+        .input-group-text {
+            background: var(--light);
+            border: 2px solid #e2e8f0;
+            border-right: none;
+        }
+
+        .password-toggle {
+            cursor: pointer;
+            background: var(--light);
+            border: 2px solid #e2e8f0;
+            border-left: none;
+        }
+
+        .validation-summary {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-register {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+            .btn-register:hover {
+                background: #1a2530;
+                transform: translateY(-2px);
+            }
+
+        .back-link {
+            color: var(--secondary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+            .back-link:hover {
+                color: var(--primary);
+            }
+
+        .field-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            z-index: 5;
+        }
+
+        .password-strength {
+            height: 5px;
+            margin-top: 0.5rem;
+            border-radius: 5px;
+            background: #e2e8f0;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .password-rules {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+
+       (max-width: 576px) {
+            .registration-container
+
+        {
+            margin: 1rem;
+            padding: 1.5rem;
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container py-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <i class="bi bi-mortarboard fs-3 text-primary me-2"></i>
+                    <span class="fw-bold text-dark">University Management</span>
+                </a>
+                <div>
+                    <a href="#" class="btn btn-outline-secondary me-2">
+                        <i class="bi bi-box-arrow-in-right me-1"></i>Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow-1 py-5">
+        <div class="container">
+            <div class="registration-container">
+                <div class="registration-header">
+                    <div class="registration-icon">
+                        <i class="bi bi-person-plus"></i>
+                    </div>
+                    <h2 class="registration-title">Admin Registration</h2>
+                    <p class="registration-subtitle">Create a new administrator account</p>
+                </div>
+
+                <!-- Validation Summary -->
+                <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+                <form asp-action="SavaAdminRegister" method="post">
+                    <div class="mb-3">
+                        <label asp-for="UserName" class="form-label">Username</label>
+                        <div class="position-relative">
+                            <input asp-for="UserName" class="form-control" placeholder="Enter username" />
+                            <i class="bi bi-person field-icon"></i>
+                        </div>
+                        <span asp-validation-for="UserName" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label">Password</label>
+                        <div class="position-relative">
+                            <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Enter password" />
+                            <i class="bi bi-lock field-icon"></i>
+                            <span class="password-toggle position-absolute end-0 top-50 translate-middle-y me-3" style="cursor: pointer; z-index: 5;">
+                                <i class="bi bi-eye" id="togglePassword"></i>
+                            </span>
+                        </div>
+                        <div class="password-strength mt-2">
+                            <div class="password-strength-bar" id="password-strength-bar"></div>
+                        </div>
+                        <div class="password-rules">
+                            <small>Use at least 8 characters with a mix of letters, numbers & symbols</small>
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ConfairmPassword" class="form-label">Confirm Password</label>
+                        <div class="position-relative">
+                            <input asp-for="ConfairmPassword" type="password" class="form-control" placeholder="Confirm your password" />
+                            <i class="bi bi-lock field-icon"></i>
+                        </div>
+                        <span asp-validation-for="ConfairmPassword" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Address" class="form-label">Address</label>
+                        <div class="position-relative">
+                            <input asp-for="Address" class="form-control" placeholder="Enter your address" />
+                            <i class="bi bi-geo-alt field-icon"></i>
+                        </div>
+                        <span asp-validation-for="Address" class="text-danger small"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-register mb-3">
+                        <i class="bi bi-person-plus me-2"></i>Create Admin Account
+                    </button>
+
+                    <div class="text-center">
+                        <a asp-action="Index" class="back-link">
+                            <i class="bi bi-arrow-left me-2"></i>Back to List
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 - University Management System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password visibility toggle
+            const togglePassword = document.querySelector('#togglePassword');
+            const password = document.querySelector('#password');
+
+            togglePassword.addEventListener('click', function() {
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+                this.classList.toggle('bi-eye');
+                this.classList.toggle('bi-eye-slash');
+            });
+
+            // Password strength indicator
+            password.addEventListener('input', function() {
+                const strengthBar = document.getElementById('password-strength-bar');
+                const value = password.value;
+                let strength = 0;
+
+                if (value.length > 0) strength += 20;
+                if (value.length >= 8) strength += 20;
+                if (/[A-Z]/.test(value)) strength += 20;
+                if (/[0-9]/.test(value)) strength += 20;
+                if (/[^A-Za-z0-9]/.test(value)) strength += 20;
+
+                strengthBar.style.width = strength + '%';
+
+                if (strength < 40) {
+                    strengthBar.style.backgroundColor = '#e74c3c';
+                } else if (strength < 80) {
+                    strengthBar.style.backgroundColor = '#f39c12';
+                } else {
+                    strengthBar.style.backgroundColor = '#27ae60';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

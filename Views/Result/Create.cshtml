@@ -1,0 +1,59 @@
+﻿@model university_Project.Models.Cls_CRS_Result
+
+@{
+    ViewData["Title"] = "Add New Result";
+}
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0"><i class="bi bi-plus-circle"></i> Add New Course Result</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <!-- Course Dropdown -->
+                <div class="mb-3">
+                    <label asp-for="Crs_ID" class="form-label">Course</label>
+                    <select asp-for="Crs_ID" class="form-select" asp-items="ViewBag.Courses">
+                        <option value="">-- Select Course --</option>
+                    </select>
+                    <span asp-validation-for="Crs_ID" class="text-danger"></span>
+                </div>
+
+                <!-- Trainer Dropdown -->
+                <div class="mb-3">
+                    <label asp-for="Trainee_ID" class="form-label">Trainer</label>
+                    <select asp-for="Trainee_ID" class="form-select" asp-items="ViewBag.Trainers">
+                        <option value="">-- Select Trainer --</option>
+                    </select>
+                    <span asp-validation-for="Trainee_ID" class="text-danger"></span>
+                </div>
+
+                <!-- Degree -->
+                <div class="mb-3">
+                    <label asp-for="Degree" class="form-label">Grade (0 - 100)</label>
+                    <input asp-for="Degree" class="form-control" type="number" min="0" max="100" step="0.1" />
+                    <span asp-validation-for="Degree" class="text-danger"></span>
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Back to List
+                    </a>
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-save"></i> Save Result
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

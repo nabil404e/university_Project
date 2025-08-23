@@ -1,0 +1,438 @@
+﻿@model university_Project.Models.AppApplayCourse
+@{
+    ViewData["Title"] = "Create";
+
+}
+
+@section Styles {
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .page-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: white;
+        }
+
+            .page-header h1 {
+                font-size: 3rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+                text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            }
+
+            .page-header h4 {
+                font-size: 1.2rem;
+                font-weight: 300;
+                opacity: 0.9;
+            }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -15px;
+        }
+
+        .col-md-4 {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .control-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+            .form-control:focus {
+                outline: none;
+                border-color: #667eea;
+                box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+                transform: translateY(-2px);
+            }
+
+            .form-control:hover {
+                border-color: #667eea;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .form-control::placeholder {
+                color: #aaa;
+                font-style: italic;
+            }
+
+        select.form-control {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23667eea"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+            padding-right: 50px;
+        }
+
+        input[type="email"] {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23667eea"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+            padding-right: 50px;
+        }
+
+        input[type="tel"] {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23667eea"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+            padding-right: 50px;
+        }
+
+        input[type="date"] {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23667eea"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+            padding-right: 50px;
+        }
+
+        .text-danger {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: block;
+            font-weight: 500;
+        }
+
+        .validation-summary {
+            background: linear-gradient(135deg, #ffe6e6, #ffcccc);
+            border: 1px solid #ffb3b3;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            color: #cc0000;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.1);
+        }
+
+            .validation-summary ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .validation-summary li {
+                margin-bottom: 0.5rem;
+            }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            border: 2px solid transparent;
+        }
+
+            .btn-primary:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+                background: linear-gradient(45deg, #5a67d8, #6b46c1);
+            }
+
+            .btn-primary:active {
+                transform: translateY(-1px);
+            }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #eee;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid #667eea;
+        }
+
+            .back-link:hover {
+                background: #667eea;
+                color: white;
+                text-decoration: none;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            }
+
+        /* Form Grid Layout */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+
+
+        {
+            font-size: 2rem;
+        }
+
+        .form-card {
+            padding: 2rem;
+            margin: 1rem;
+            border-radius: 15px;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .page-container {
+            padding: 0 0.5rem;
+        }
+
+        }
+
+        /* Loading state */
+        .loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        /* Focus states */
+        .form-group.focused .control-label {
+            color: #667eea;
+            transform: scale(0.95);
+        }
+
+        /* Validation states */
+        .form-control.is-valid {
+            border-color: #28a745;
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+        }
+
+        .form-control.is-invalid {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+        }
+
+        /* Hidden elements */
+        [hidden] {
+            display: none !important;
+        }
+    </style>
+}
+
+<div class="page-container">
+    <div class="page-header">
+        <h1>Course Application</h1>
+        <h4>Apply for Your Desired Course</h4>
+    </div>
+
+    <div class="form-card">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label asp-for="ID" class="control-label" hidden>Student ID</label>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label">Full Name</label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter your full name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label asp-for="Address" class="control-label">Address</label>
+                            <input asp-for="Address" class="form-control" placeholder="Enter your complete address" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <select asp-for="Dept_ID" asp-items="ViewBag.Departments" class="form-select">
+                                <option value="">-- Select Department --</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+                            <select asp-for="Crs_ID" asp-items="ViewBag.Courses" class="form-select">
+                                <option value="">-- Select Course --</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="DateOfBirth" class="control-label">Date of Birth</label>
+                            <input asp-for="DateOfBirth" class="form-control" type="date" />
+                            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Gender" class="control-label">Gender</label>
+                            <select asp-for="Gender" class="form-control">
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="RegistrationDate" class="control-label">Registration Date</label>
+                            <input asp-for="RegistrationDate" class="form-control" type="date" />
+                            <span asp-validation-for="RegistrationDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label">Email Address</label>
+                            <input asp-for="Email" class="form-control" type="email" placeholder="Enter your email address" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Phone" class="control-label">Phone Number</label>
+                            <input asp-for="Phone" class="form-control" type="tel" placeholder="Enter your phone number" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" value="Submit Application" class="btn btn-primary" />
+                        <br>
+                        <a asp-action="Index" class="back-link">← Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function() {
+            // Add loading state to form submission
+            $('form').on('submit', function() {
+                const submitBtn = $(this).find('input[type="submit"]');
+                submitBtn.addClass('loading');
+                submitBtn.val('Processing...');
+            });
+
+            // Enhanced form interactions
+            $('.form-control').on('focus', function() {
+                $(this).parent().addClass('focused');
+            }).on('blur', function() {
+                $(this).parent().removeClass('focused');
+            });
+
+            // Auto-set registration date to today if empty
+            const regDateField = $('input[name="RegistrationDate"]');
+            if (regDateField.val() === '') {
+                const today = new Date().toISOString().split('T')[0];
+                regDateField.val(today);
+            }
+
+            // Form validation feedback
+            $('.form-control').on('blur', function() {
+                const field = $(this);
+                const isValid = this.checkValidity();
+
+                if (isValid && field.val() !== '') {
+                    field.removeClass('is-invalid').addClass('is-valid');
+                } else if (!isValid) {
+                    field.removeClass('is-valid').addClass('is-invalid');
+                } else {
+                    field.removeClass('is-valid is-invalid');
+                }
+            });
+
+            // Smooth scroll to validation errors
+            if ($('.text-danger:visible').length > 0) {
+                $('html, body').animate({
+                    scrollTop: $('.text-danger:visible').first().offset().top - 100
+                }, 500);
+            }
+        });
+    </script>
+}

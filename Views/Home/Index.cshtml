@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>University Management System</title>
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1565C0;
+            --secondary: #42A5F5;
+            --accent: #FF9800;
+            --light: #E3F2FD;
+            --dark: #0D47A1;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --info: #29B6F6;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(21, 101, 192, 0.9), rgba(13, 71, 161, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 3rem;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .feature-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+            .feature-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            }
+
+        .card-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 50%;
+            background: var(--light);
+        }
+
+        .stats-section {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin: 3rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+
+        .btn-cta {
+            background: white;
+            color: var(--primary);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+            .btn-cta:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+
+        .user-actions {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header / Navbar -->
+    @* <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, #1565C0 0%, #0D47A1 100%);">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <i class="bi bi-mortarboard"></i>EduManage
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainNavbar" aria-controls="mainNavbar"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <i class="bi bi-house-door"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-info-circle"></i>About
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-envelope"></i>Contact
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-box-arrow-in-right"></i>Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-person-plus"></i>Register
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header> *@
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-3 fw-bold mb-3">University Management System</h1>
+            <p class="lead mb-4">Streamlining education management for institutions, educators, and students</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="#" class="btn btn-light btn-lg px-4 py-2">Explore Features</a>
+                <a href="#" class="btn btn-outline-light btn-lg px-4 py-2">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- User Actions (for unauthenticated users) -->
+        @* <div class="user-actions text-center">
+            <h3 class="mb-4">Get Started with Our Platform</h3>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="#" class="btn btn-primary px-4">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Login to Your Account
+                </a>
+                <a href="#" class="btn btn-outline-primary px-4">
+                    <i class="bi bi-person-plus me-2"></i>Create New Account
+                </a>
+            </div>
+        </div> *@
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">1,250+</div>
+                        <div class="stat-label">Students</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">85+</div>
+                        <div class="stat-label">Courses</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Instructors</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Departments</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <h2 class="text-center mb-4 fw-bold">System Features</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card card">
+                    <div class="card-body text-center p-4">
+                        <div class="card-icon text-primary">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h4 class="card-title">Student Management</h4>
+                        <p class="card-text">Efficiently manage student records, enrollments, and academic progress in one centralized system.</p>
+                        <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card card">
+                    <div class="card-body text-center p-4">
+                        <div class="card-icon text-success">
+                            <i class="bi bi-journal-bookmark-fill"></i>
+                        </div>
+                        <h4 class="card-title">Course Catalog</h4>
+                        <p class="card-text">Browse and manage comprehensive course offerings with detailed descriptions and requirements.</p>
+                        <a href="#" class="btn btn-outline-success mt-3">Explore Courses</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card card">
+                    <div class="card-body text-center p-4">
+                        <div class="card-icon text-warning">
+                            <i class="bi bi-clipboard-data-fill"></i>
+                        </div>
+                        <h4 class="card-title">Grade Management</h4>
+                        <p class="card-text">Track and manage student grades, generate reports, and monitor academic performance.</p>
+                        <a href="#" class="btn btn-outline-warning mt-3">View Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Row of Features -->
+        <div class="row g-4 mt-4">
+            <div class="col-md-4">
+                <div class="feature-card card">
+                    <div class="card-body text-center p-4">
+                        <div class="card-icon text-info">
+                            <i class="bi bi-person-badge-fill"></i>
+                        </div>
+                        <h4 class="card-title">Faculty Management</h4>
+                        <p class="card-text">Manage instructor profiles, assignments, and course allocations with ease.</p>
+                        <a href="#" class="btn btn-outline-info mt-3">Meet Our Team</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card card">
+                    <div class="card-body text-center p-4">
+                        <div class="card-icon text-danger">
+                            <i class="bi bi-building-fill"></i>
+                        </div>
+                        <h4 class="card-title">Department Portal</h4>
+                        <p class="card-text">Access department-specific resources, faculty, and course information.</p>
+                        <a href="#" class="btn btn-outline-danger mt-3">View Departments</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card card">
+                    <div class="card-body text-center p-4">
+                        <div class="card-icon text-secondary">
+                            <i class="bi bi-bar-chart-fill"></i>
+                        </div>
+                        <h4 class="card-title">Reporting & Analytics</h4>
+                        <p class="card-text">Generate comprehensive reports and gain insights into institutional performance.</p>
+                        <a href="#" class="btn btn-outline-secondary mt-3">See Reports</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action Section -->
+        <div class="cta-section text-center">
+            <h2 class="mb-3">Ready to Get Started?</h2>
+            <p class="mb-4">Join thousands of educational institutions using our platform to streamline their operations</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="#" class="btn btn-cta">Request a Demo</a>
+                <a href="#" class="btn btn-outline-light">Contact Sales</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    @* <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">
+                        <i class="bi bi-mortarboard me-2"></i>EduManage
+                    </h5>
+                    <p>Comprehensive university management system designed to streamline administrative tasks and enhance the educational experience.</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light">Home</a></li>
+                        <li class="mb-2"><a href="#" class="text-light">About</a></li>
+                        <li class="mb-2"><a href="#" class="text-light">Features</a></li>
+                        <li class="mb-2"><a href="#" class="text-light">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="mb-3">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-light">Documentation</a></li>
+                        <li class="mb-2"><a href="#" class="text-light">Help Center</a></li>
+                        <li class="mb-2"><a href="#" class="text-light">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="#" class="text-light">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i> info@edumanage.com</li>
+                        <li class="mb-2"><i class="bi bi-telephone me-2"></i> +1 (555) 123-4567</li>
+                        <li class="mb-2"><i class="bi bi-geo-alt me-2"></i> 123 Education St, Campus City</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 EduManage University System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer> *@
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
