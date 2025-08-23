@@ -269,6 +269,7 @@ All contributors who have helped shape this project
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/bd7431c5-6a90-493f-ba70-a0ff6693426a" />
 
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ab8063bc-4e8e-4bb8-9769-21411924b609" />
 
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e09d659c-31d1-452a-a852-d4f42bdc8332" />
