@@ -96,7 +96,7 @@ university_Project/
 
 ### Installation
 1️⃣ Clone the repository:
-git clone https://github.com/Osama-matter/university_Project.git
+git clone https://github.com/nabil404e/university_Project.git
 cd university_Project
 
 2️⃣ Restore dependencies:
